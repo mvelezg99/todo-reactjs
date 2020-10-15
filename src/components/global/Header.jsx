@@ -8,7 +8,7 @@ import Typography from "@material-ui/core/Typography";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { ThemeProvider } from "@material-ui/core/styles";
 // ----- Styles imports
-import { headerTheme, useHeaderStyles } from "../../styles/header_theme";
+import { headerTheme, useHeaderStyles } from "../../styles/header_style";
 // ----- Images imports
 import logoTodo from "../../images/logo_todo.png";
 
