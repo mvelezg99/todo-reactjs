@@ -1,15 +1,15 @@
-// ----- React imports 
+// ---------- React imports 
 import React from "react";
-// ----- Components imports
+// ---------- Components imports
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
-// ----- Utils imports
+// --------- Utils imports
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { ThemeProvider } from "@material-ui/core/styles";
-// ----- Styles imports
+// ---------- Styles imports
 import { headerTheme, useHeaderStyles } from "../../styles/header_style";
-// ----- Images imports
+// ---------- Images imports
 import logoTodo from "../../images/logo_todo.png";
 
 const Header = () => {

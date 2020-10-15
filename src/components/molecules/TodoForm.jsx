@@ -1,18 +1,18 @@
-// ----- React imports
+// ---------- React imports
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// ----- Components imports
+// ---------- Components imports
 import TextField from "@material-ui/core/TextField";
 import FormLabel from "@material-ui/core/FormLabel";
 import Button from "@material-ui/core/Button";
-// ----- Layout imports
+// ---------- Layout imports
 import Grid from "@material-ui/core/Grid";
-// ----- Utils imports
+// ---------- Utils imports
 import { v1 as uuid } from "uuid";
 import { ThemeProvider } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { createTodo } from "../../redux_store/todosReducer";
-// ----- Styles imports
+// ---------- Styles imports
 import { homeTheme, useHomeStyles } from "../../styles/home_style";
 
 const INITIAL_TODO = {
@@ -26,24 +26,33 @@ const INITIAL_TODO = {
 const TodoForm = () => {
   const dispatch = useDispatch();
   const classes = useHomeStyles();
-  const widthMatches = useMediaQuery("(max-width:360px)");
+  const widthMatches = useMediaQuery("(max-width:470px)");
 
   const todos = useSelector((state) => state.todos);
   const [todo, setTodo] = useState(INITIAL_TODO);
 
-  const handleSubmit = (e) => {
-    if (!todo.error.error) {
+  const handleSubmit = () => {
+    if (todo.name === "") {
+      setTodo({
+        name: todo.name,
+        error: {
+          error: true,
+          message: "Can not add an empty task."
+        }
+      })
+    }
+
+    if (!todo.error.error && todo.name !== "") {
       const newTodo = {
         id: uuid(),
         order: todos.length,
         name: todo.name,
         completed: false,
+        deleted: false,
       };
-
       dispatch(createTodo(newTodo));
       setTodo(INITIAL_TODO);
-      console.log(todos);
-    }
+    } 
   };
 
   const handleChange = (e) => {
@@ -52,8 +61,6 @@ const TodoForm = () => {
       name: value,
       error: validateTodo(value),
     });
-
-    console.log(todo);
   };
 
   function validateTodo(todo) {
@@ -82,6 +89,7 @@ const TodoForm = () => {
       <Grid container direction="row" spacing={4} className={classes.todo_form}>
         <Grid item className={classes.todo_input}>
           <TextField
+            autoComplete="off"
             type="string"
             error={todo.error.error}
             helperText={todo.error.message}
