@@ -28,6 +28,7 @@ import EditIcon from "@material-ui/icons/Edit";
 import AssignmentTurnedInIcon from "@material-ui/icons/AssignmentTurnedIn";
 import Assignment from "@material-ui/icons/Assignment";
 import DeleteIcon from "@material-ui/icons/Delete";
+import { IconButton } from "@material-ui/core";
 
 const TodoItem = ({ todo }) => {
   const widthMatches = useMediaQuery("(max-width:740px)");
@@ -40,6 +41,7 @@ const TodoItem = ({ todo }) => {
   }
 
   function handleComplete(todo) {
+    console.log(todo)
     dispatch(completeTodo(todo));
   }
 

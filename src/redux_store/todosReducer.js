@@ -1,6 +1,10 @@
+import { arrayMove } from "array-move";
+
 export const ADD_TODO_ACTION = "ADD_TODO";
 export const DELETE_TODO_ACTION = "DELETE_TODO";
 export const COMPLETE_TODO_ACTION = "COMPLETE_TODO";
+
+export const MOVE_TODO_ACTION = "MOVE_TODO"
 
 export function todosReducer(state = [], action) {
   switch (action.type) {
@@ -34,6 +38,10 @@ export function todosReducer(state = [], action) {
       return newTodos;
     }
 
+    case MOVE_TODO_ACTION: {
+      return action.todos
+    }
+
     default:
       return state;
   }
@@ -59,3 +67,10 @@ export const completeTodo = (todo) => {
     todo,
   };
 };
+
+export const moveTodo = (todos) => {
+  return {
+    type: MOVE_TODO_ACTION,
+    todos
+  }
+}
