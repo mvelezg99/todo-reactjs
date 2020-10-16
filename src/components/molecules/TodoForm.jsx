@@ -45,7 +45,7 @@ const TodoForm = () => {
     if (!todo.error.error && todo.name !== "") {
       const newTodo = {
         id: uuid(),
-        order: todos.length,
+        order: todos.length + 1,
         name: todo.name,
         completed: false,
         deleted: false,

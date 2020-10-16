@@ -4,11 +4,12 @@ import React from "react";
 import Paper from "@material-ui/core/Paper";
 import TodoForm from "../components/molecules/TodoForm";
 import TodoList from "../components/molecules/TodoList";
+import TodoCounter from "../components/molecules/TodoCounter";
 // ---------- Layout imports
 import Container from "@material-ui/core/Container";
-// ---------- Utils imports
 // ---------- Styles imports
 import { useHomeStyles } from "../styles/home_style";
+
 
 
 const Home = () => {
@@ -18,6 +19,7 @@ const Home = () => {
     <Container maxWidth="md" className={classes.root}>
       <Paper>
         <TodoForm />
+        <TodoCounter />
         <br />
         <TodoList />
       </Paper>

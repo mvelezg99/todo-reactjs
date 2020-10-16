@@ -4,27 +4,34 @@ export const COMPLETE_TODO_ACTION = "COMPLETE_TODO";
 
 export function todosReducer(state = [], action) {
   switch (action.type) {
-    case ADD_TODO_ACTION:
-      return [...state, action.todo];
+    case ADD_TODO_ACTION: {
+
+      const newTodos = [...state, action.todo];
+      
+      return newTodos;
+    }
 
     case DELETE_TODO_ACTION: {
-      const newTodos = state.filter((todo) => todo.id !== action.todo.id);
-      const sortedTodos = newTodos.map((todo, index) => {
-        return { ...todo, order: index };
+      const newTodos = state.map((todo) => {
+        return {
+          ...todo,
+          deleted: todo.id === action.todo.id ? true : todo.deleted,
+          order: todo.id === action.todo.id ? 0 : todo.order
+        };
       });
 
-      return sortedTodos;
+      return newTodos;
     }
 
     case COMPLETE_TODO_ACTION: {
       const newTodos = state.map((todo) => {
         return {
           ...todo,
-          completed: todo.id === action.todo.id ? !todo.completed : todo.completed,
+          completed:
+            todo.id === action.todo.id ? !todo.completed : todo.completed,
         };
       });
       return newTodos;
-      
     }
 
     default:
