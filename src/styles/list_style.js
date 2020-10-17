@@ -1,5 +1,5 @@
 import { createMuiTheme, makeStyles } from "@material-ui/core/styles";
-import { green } from "@material-ui/core/colors";
+import { green, red } from "@material-ui/core/colors";
 
 export const listTheme = createMuiTheme({
   palette: {
@@ -18,6 +18,12 @@ export const useListStyles = makeStyles(() => ({
   },
   avatar_completed: {
     backgroundColor: green[500],
+    color: "#FFFFFF",
+    height: 30,
+    width: 50,
+  },
+  avatar_deleted:{
+    backgroundColor: red[500],
     color: "#FFFFFF",
     height: 30,
     width: 50,
@@ -60,8 +66,24 @@ export const useListStyles = makeStyles(() => ({
     marginTop: 0,
     marginBottom: 15,
   },
-  paper_complete:{
+  paper_editing: {
+    backgroundColor: "#fce8b3",
+    marginTop: 5,
+  },
+  paper_completed:{
     backgroundColor: green[500],
+    height: 30,
+    marginRight: 10,
+    marginLeft: 5,
+    marginTop: 0,
+    marginBottom: 15
+  },
+  paper_completed_editing:{
+    backgroundColor: green[500],
+    marginTop: 5,
+  },
+  paper_deleted: {
+    backgroundColor: red[500],
     height: 30,
     marginRight: 10,
     marginLeft: 5,
@@ -81,5 +103,18 @@ export const useListStyles = makeStyles(() => ({
     color: "#234f3a",
     fontStyle: "italic",
     textDecoration: "line-through"
+  },
+  paper_text_deleted:{
+    marginLeft: 20,
+    paddingTop: 2,
+    wordBreak: "break-word",
+    color: red[900],
+    fontStyle: "italic",
+    textDecoration: "line-through"
+  },
+  input_div: {
+    marginLeft: 20,
+    flexGrow: 8,
+    width: "75%",
   }
 }));

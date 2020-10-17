@@ -15,6 +15,7 @@ export const useCounterStyles = makeStyles(() => ({
   counter_div: {
     marginLeft: 20,
     textAlign: "center",
+    alignItems: "center",
     display: "block"
   },
   paper: {

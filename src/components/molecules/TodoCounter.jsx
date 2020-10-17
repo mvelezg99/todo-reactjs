@@ -6,53 +6,14 @@ import Paper from "@material-ui/core/Paper";
 // ---------- Layout imports
 import Grid from "@material-ui/core/Grid";
 // ---------- Utils imports
-import { ThemeProvider } from "@material-ui/core/styles";
+import { getDeletedTodos, getFinishedTodos, getTotalTodos, getUnfinishedTodos } from '../../utils/todos'
 // ---------- Styles imports
 import { useCounterStyles } from "../../styles/counter_styles";
+// ---------- Images imports
 
 const TodoCounter = () => {
   const classes = useCounterStyles();
   const todos = useSelector((state) => state.todos);
-
-  function getUnfinishedTodos(todos) {
-    let unfinishedTodos = 0;
-    todos.forEach((todo) => {
-      if (!todo.completed && !todo.deleted) {
-        unfinishedTodos++;
-      }
-    });
-    return unfinishedTodos;
-  }
-
-  function getFinishedTodos(todos) {
-    let finishedTodos = 0;
-    todos.forEach((todo) => {
-      if (todo.completed && !todo.deleted) {
-        finishedTodos++;
-      }
-    });
-    return finishedTodos;
-  }
-
-  function getDeletedTodos(todos) {
-    let deletedTodos = 0;
-    todos.forEach((todo) => {
-      if (todo.deleted) {
-        deletedTodos++;
-      }
-    });
-    return deletedTodos;
-  }
-
-  function getTotalTodos(todos) {
-    let totalTodos = 0;
-    todos.forEach((todo) => {
-      if (!todo.deleted) {
-        totalTodos++;
-      }
-    });
-    return totalTodos;
-  }
 
   return (
     <Grid container className={classes.counter_div}>

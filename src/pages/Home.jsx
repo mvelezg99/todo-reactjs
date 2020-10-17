@@ -20,7 +20,6 @@ const Home = () => {
       <Paper>
         <TodoForm />
         <TodoCounter />
-        <br />
         <TodoList />
       </Paper>
     </Container>

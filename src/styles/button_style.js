@@ -34,6 +34,17 @@ export const editTheme = createMuiTheme({
   },
 });
 
+export const orderTheme = createMuiTheme({
+  palette: {
+    primary: {
+      main: blueGrey[800],
+    },
+    secondary: {
+      main: "#FFFFFF",
+    },
+  },
+});
+
 export const deleteTheme = createMuiTheme({
   palette: {
     primary: {
