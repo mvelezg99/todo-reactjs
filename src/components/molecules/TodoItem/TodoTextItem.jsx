@@ -8,7 +8,7 @@ import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 // ---------- Layout imports
 import Grid from "@material-ui/core/Grid";
 // ---------- Styles imports
-import { useListStyles } from "../../styles/list_style";
+import { useListStyles } from "../../../styles/list_style";
 
 const TodoTextItem = ({ todo }) => {
   const classes = useListStyles();

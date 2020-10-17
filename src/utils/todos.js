@@ -37,36 +37,3 @@ export function getTotalTodos(todos) {
   });
   return totalTodos;
 }
-
-export function filterFinishedTodos(todos) {
-  const filteredTodos = todos.filter((todo) => todo.completed && !todo.deleted);
-  return filteredTodos;
-}
-
-export function filterUnfinishedTodos(todos) {
-  const filteredTodos = todos.filter(
-    (todo) => !todo.completed && !todo.deleted
-  );
-  return filteredTodos;
-}
-
-export function filterDeletedTodos(todos) {
-  const filteredTodos = todos.filter((todo) => todo.deleted);
-  return filteredTodos;
-}
-
-export function filterSearchTodos(todos, search) {
-  const todosFiltered = todos.filter(
-    (todo) =>
-      todo.name.toLowerCase().includes(search.toLowerCase()) && !todo.deleted
-  );
-  return todosFiltered;
-}
-
-export function filterSearchDeletedTodos(todos, search) {
-  const todosFiltered = todos.filter(
-    (todo) =>
-      todo.name.toLowerCase().includes(search.toLowerCase()) && todo.deleted
-  );
-  return todosFiltered;
-}

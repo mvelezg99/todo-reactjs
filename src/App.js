@@ -8,7 +8,6 @@ function App() {
     <Fragment>
       <Header />
       <div className="App">
-        {/* <h1>TODO React Application</h1> */}
         <Home />
       </div>
       

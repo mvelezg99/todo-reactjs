@@ -11,25 +11,25 @@ export const listTheme = createMuiTheme({
 
 export const useListStyles = makeStyles(() => ({
   avatar: {
-    backgroundColor: "#fce8b3",
-    color: "black",
-    height: 30,
-    width: 50,
+    backgroundColor: "#fce8b3 !important",
+    color: "black !important",
+    height: "30px !important",
+    width: "50px !important",
   },
   avatar_completed: {
-    backgroundColor: green[500],
-    color: "#FFFFFF",
-    height: 30,
-    width: 50,
+    backgroundColor: `${green[500]} !important`,
+    color: "#FFFFFF !important",
+    height: "30px !important",
+    width: "50px !important",
   },
   avatar_deleted:{
-    backgroundColor: red[500],
-    color: "#FFFFFF",
-    height: 30,
-    width: 50,
+    backgroundColor: `${red[500]} !important`,
+    color: "#FFFFFF !important",
+    height: "30px !important",
+    width: "50px !important",
   },
   avatar_div: {
-    margin: "auto",
+    margin: "auto !important",
   },
   list_row: {
     display: "flex",
