@@ -8,8 +8,8 @@ This is a To Do list application made in React JS, using MaterialUI, Redux and H
 
 This application includes basic CRUD features to create, edit and delete tasks; and also has some extra features such as:
 
-* **Mark tasks as completed**
-* **Drag and drop tasks**
+* Mark tasks as completed
+* Drag and drop tasks
 
 * **Filters:**
     - Filter tasks by user-entered text
