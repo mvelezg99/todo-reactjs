@@ -34,9 +34,19 @@ export function todosReducer(state = [], action) {
           deleted: todo.id === action.todo.id ? true : todo.deleted,
           order: todo.id === action.todo.id ? 0 : todo.order,
         };
-      });
+      })
 
-      return newTodos;
+      const sortedTodos = [...newTodos].sort((todoA, todoB) => {
+        if (todoA.deleted && !todoB.deleted) {
+          return 1;
+        } else if (!todoA.deleted && todoB.deleted) {
+          return -1;
+        } else {
+          return 0;
+        }
+      });
+      return sortedTodos;
+
     }
 
     case COMPLETE_TODO_ACTION: {
