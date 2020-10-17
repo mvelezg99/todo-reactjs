@@ -22,7 +22,6 @@ export const useFilterStyles = makeStyles(() => ({
     marginRight: 40,
   },
   content_div: {
-    
     display: "flex",
     justifyContent: "center",
     margin: "auto",

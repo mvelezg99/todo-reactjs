@@ -1,15 +1,4 @@
-import { createMuiTheme, makeStyles } from "@material-ui/core/styles";
-
-export const counterTheme = createMuiTheme({
-  palette: {
-    primary: {
-      main: "#F7D881",
-    },
-    textPrimary: {
-      main: "#000000",
-    },
-  },
-});
+import { makeStyles } from "@material-ui/core/styles";
 
 export const useCounterStyles = makeStyles(() => ({
   counter_div: {

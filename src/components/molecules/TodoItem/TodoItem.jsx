@@ -2,8 +2,8 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 // ---------- Components imports
+import TodoItemButtons from "./TodoItemButtons";
 import Paper from "@material-ui/core/Paper";
-import Button from "@material-ui/core/Button";
 import Avatar from "@material-ui/core/Avatar";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
@@ -11,31 +11,13 @@ import TextField from "@material-ui/core/TextField";
 // ---------- Layout imports
 import Grid from "@material-ui/core/Grid";
 // ---------- Utils imports
-import {
-  deleteTodo,
-  completeTodo,
-  updateTodo,
-} from "../../redux_store/todosReducer";
-import { updateEditing } from "../../redux_store/appReducer";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { updateTodo } from "../../../redux_store/todosReducer";
+import { updateEditing } from "../../../redux_store/appReducer";
+
 // ---------- Styles imports
-import { useListStyles } from "../../styles/list_style";
-import {
-  successTheme,
-  notSuccessTheme,
-  editTheme,
-  deleteTheme,
-} from "../../styles/button_style";
-import { ThemeProvider } from "@material-ui/core/styles";
-// ---------- Images imports
-import EditIcon from "@material-ui/icons/Edit";
-import SaveIcon from "@material-ui/icons/Save";
-import AssignmentTurnedInIcon from "@material-ui/icons/AssignmentTurnedIn";
-import Assignment from "@material-ui/icons/Assignment";
-import DeleteIcon from "@material-ui/icons/Delete";
+import { useListStyles } from "../../../styles/list_style";
 
 const TodoItem = ({ todo }) => {
-  const widthMatches = useMediaQuery("(max-width:740px)");
   const classes = useListStyles();
   const dispatch = useDispatch();
 
@@ -50,14 +32,6 @@ const TodoItem = ({ todo }) => {
       message: "",
     },
   });
-
-  function handleDelete(todo) {
-    dispatch(deleteTodo(todo));
-  }
-
-  function handleComplete(todo) {
-    dispatch(completeTodo(todo));
-  }
 
   function handleUpdate() {
     if (!editable) {
@@ -100,7 +74,7 @@ const TodoItem = ({ todo }) => {
     }
   }
 
-  function assignPaperEditingClass(todo) {
+  function assignPaperClass(todo) {
     if (isEditing && todo.completed) return classes.paper_completed_editing;
     else if (isEditing) return classes.paper_editing;
     else if (todo.completed) return classes.paper_completed;
@@ -121,7 +95,7 @@ const TodoItem = ({ todo }) => {
           </Avatar>
         </ListItemAvatar>
         <Grid item className={classes.list_item_text}>
-          <Paper elevation={1} className={assignPaperEditingClass(todo)}>
+          <Paper elevation={1} className={assignPaperClass(todo)}>
             {editable ? (
               <TextField
                 autoComplete="off"
@@ -147,64 +121,11 @@ const TodoItem = ({ todo }) => {
             )}
           </Paper>
         </Grid>
-        <Grid
-          item
-          className={
-            !widthMatches ? classes.list_buttons : classes.list_buttons_xs
-          }
-        >
-          <Grid container spacing={1} className={classes.buttons_div}>
-            <Grid item className={classes.item_button}>
-              <ThemeProvider
-                theme={todo.completed ? notSuccessTheme : successTheme}
-              >
-                <Button
-                  className={classes.button}
-                  onClick={() => handleComplete(todo)}
-                  variant="contained"
-                  color="primary"
-                  size="small"
-                >
-                  {!todo.completed ? (
-                    <AssignmentTurnedInIcon color="secondary" />
-                  ) : (
-                    <Assignment color="secondary" />
-                  )}
-                </Button>
-              </ThemeProvider>
-            </Grid>
-            <Grid item className={classes.item_button}>
-              <ThemeProvider theme={editTheme}>
-                <Button
-                  className={classes.button}
-                  onClick={() => handleUpdate()}
-                  variant="contained"
-                  color="primary"
-                  size="small"
-                >
-                  {!editable ? (
-                    <EditIcon color="secondary" />
-                  ) : (
-                    <SaveIcon color="secondary" />
-                  )}
-                </Button>
-              </ThemeProvider>
-            </Grid>
-            <Grid item className={classes.item_button}>
-              <ThemeProvider theme={deleteTheme}>
-                <Button
-                  className={classes.button}
-                  onClick={() => handleDelete(todo)}
-                  variant="contained"
-                  color="primary"
-                  size="small"
-                >
-                  <DeleteIcon color="secondary" />
-                </Button>
-              </ThemeProvider>
-            </Grid>
-          </Grid>
-        </Grid>
+        <TodoItemButtons
+          todo={todo}
+          handleUpdate={handleUpdate}
+          editable={editable}
+        />
       </Grid>
     </ListItem>
   );

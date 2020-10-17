@@ -1,5 +1,5 @@
 // ---------- React imports
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 // ---------- Components imports
 import {
@@ -14,21 +14,13 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Grid from "@material-ui/core/Grid";
 // ---------- Utils imports
 import { FILTER_OPTIONS } from "../../utils/filterOptions";
-import {
-  getTotalTodos,
-  filterSearchTodos,
-  filterFinishedTodos,
-  filterUnfinishedTodos,
-  filterDeletedTodos,
-} from "../../utils/todos";
+import { getTotalTodos } from "../../utils/todos";
 // ---------- Styles imports
 import { useFilterStyles } from "../../styles/filter_styles";
 // ---------- Images imports
 import Search from "@material-ui/icons/Search";
 
 const TodoFilter = ({
-  setIsFilter,
-  setIsSearch,
   setSearch,
   setFilterOption,
   search,
@@ -43,7 +35,7 @@ const TodoFilter = ({
       setSearch("");
       setFilterOption(FILTER_OPTIONS.all);
     }
-  }, [todos]);
+  }, [todos, setFilterOption, setSearch]);
 
   const handleCheck = (e, option) => {
     setFilterOption(e.target.checked ? option : FILTER_OPTIONS.all);

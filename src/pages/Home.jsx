@@ -3,7 +3,7 @@ import React from "react";
 // ---------- Components imports
 import Paper from "@material-ui/core/Paper";
 import TodoForm from "../components/molecules/TodoForm";
-import TodoList from "../components/molecules/TodoList";
+import TodoList from "../components/organisms/TodoList";
 import TodoCounter from "../components/molecules/TodoCounter";
 // ---------- Layout imports
 import Container from "@material-ui/core/Container";
